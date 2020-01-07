@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Script", "Script", "{EA81F7B1-B5EE-4311-88C8-757A025C4B3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UDT", "UDT", "{63F0D748-FBE3-4926-BBAC-A85DD33A7EFA}"
+	ProjectSection(SolutionItems) = preProject
+		dbo.udt_Categorytype.sql = dbo.udt_Categorytype.sql
+		Udt_ProductTypeForInsert.sql = Udt_ProductTypeForInsert.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "USP", "USP", "{96551D27-A6E8-461D-9EFA-D3AB8E8FC889}"
+	ProjectSection(SolutionItems) = preProject
+		Usp_dbo.InsertProduct.sql = Usp_dbo.InsertProduct.sql
+		Usp_Getcategory.sql = Usp_Getcategory.sql
+		Usp_Getproduct.sql = Usp_Getproduct.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDL", "DDL", "{70E9CA2C-731E-4BC3-8E3F-DDCEEF2F7288}"
+	ProjectSection(SolutionItems) = preProject
+		CreateCategorytable_1.sql = CreateCategorytable_1.sql
+		CreateProductclass_1.sql = CreateProductclass_1.sql
+		Createsupplierproducttable.sql = Createsupplierproducttable.sql
+		CreateSuppliertable.sql = CreateSuppliertable.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onlineshopping", "Onlineshopping\Onlineshopping.csproj", "{CCC29237-BDAF-4522-958D-202954DE90EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCC29237-BDAF-4522-958D-202954DE90EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC29237-BDAF-4522-958D-202954DE90EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC29237-BDAF-4522-958D-202954DE90EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC29237-BDAF-4522-958D-202954DE90EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{63F0D748-FBE3-4926-BBAC-A85DD33A7EFA} = {EA81F7B1-B5EE-4311-88C8-757A025C4B3C}
+		{96551D27-A6E8-461D-9EFA-D3AB8E8FC889} = {EA81F7B1-B5EE-4311-88C8-757A025C4B3C}
+		{70E9CA2C-731E-4BC3-8E3F-DDCEEF2F7288} = {EA81F7B1-B5EE-4311-88C8-757A025C4B3C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1447CC9A-61B6-4348-B874-DDDD023EB794}
+	EndGlobalSection
+EndGlobal

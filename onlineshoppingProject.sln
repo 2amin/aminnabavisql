@@ -7,15 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Script", "Script", "{EA81F7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UDT", "UDT", "{63F0D748-FBE3-4926-BBAC-A85DD33A7EFA}"
 	ProjectSection(SolutionItems) = preProject
-		dbo.udt_Categorytype.sql = dbo.udt_Categorytype.sql
+		Udt_Categorytype.sql = Udt_Categorytype.sql
 		Udt_ProductTypeForInsert.sql = Udt_ProductTypeForInsert.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "USP", "USP", "{96551D27-A6E8-461D-9EFA-D3AB8E8FC889}"
 	ProjectSection(SolutionItems) = preProject
-		Usp_dbo.InsertProduct.sql = Usp_dbo.InsertProduct.sql
 		Usp_Getcategory.sql = Usp_Getcategory.sql
 		Usp_Getproduct.sql = Usp_Getproduct.sql
+		Usp_InsertProduct.sql = Usp_InsertProduct.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDL", "DDL", "{70E9CA2C-731E-4BC3-8E3F-DDCEEF2F7288}"

@@ -41,28 +41,37 @@ namespace Onlineshopping.Model.DomainModel.POCO
                 }
 
             }
-        } 
+        }
         #endregion
 
-        public static string SaveProduct(List<Helper.SpHelper.Product1.Insertproduct> insertproducts)
+        #region [-Insert Product-]
+        public static string InsertProduct(List<Helper.SpHelper.Product1.Insertproduct> insertproducts)
         {
-            using (var context=new DomainModel.DTO.EF.onlineshopingEntities())
+            using (var context = new DomainModel.DTO.EF.onlineshopingEntities())
             {
                 try
                 {
-                   return context.Database.ExecuteSqlCommand
-                        (Model.Helper.SpHelper.Product1.Productsphelper.Usp_InsertProduct,
-                          Model.Helper.SpHelper.Product1.Productsphelper.SetInsertParameters(insertproducts)).ToString();
+                    return context.Database.ExecuteSqlCommand
+                         (Model.Helper.SpHelper.Product1.Productsphelper.Usp_InsertProduct,
+                           Model.Helper.SpHelper.Product1.Productsphelper.SetInsertParameters(insertproducts)).ToString();
                 }
                 catch (Exception)
                 {
 
                     throw;
                 }
+                finally
+                {
+                    if (context != null)
+                    {
+                        context.Dispose();
+                    }
+                }
 
             }
 
-        }
+        } 
+        #endregion
 
     }
 }

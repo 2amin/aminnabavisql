@@ -1,7 +1,7 @@
-﻿CREATE or alter PROCEDURE dbo.InsertProduct
+﻿ALTER   PROCEDURE [dbo].[InsertProduct]
    @insertProduct dbo.Udt_Producttypeforinsert Readonly
 AS
-  
+begin  
 declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.productname From @insertProduct ipr
    declare @Categoryid nvarchar(50)
    declare @Supplierid nvarchar(50)
@@ -9,7 +9,7 @@ declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.
    declare @Eror nvarchar(100)
 	open Insertproductcursor
 	fetch next from Insertproductcursor into @Categoryid,@Supplierid,@Productname
-	while @@FETCH_STATUS=0
+	while @@FETCH_STATUS = 0
 		begin
 		        if(@Productname in(Select P.Productname From Product P))
 					BEGIN
@@ -32,25 +32,19 @@ declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.
 						set @Eror = 'There is not this categoryid or this supplierid'
 						
 						END
-						
+					
+					
 					End
+					print @Eror
+					fetch next from Insertproductcursor into @Categoryid,@Supplierid,@Productname
+				
+					
+			End
 
-
-					fetch next from Insertproductcursor into @Categoryid,@Supplierid
-		End
+					
+		
 
 close Insertproductcursor
 deallocate Insertproductcursor
-Print @Eror
 return @Eror
-
-declare @x Udt_producttypeforinsert
-
-Insert into @x(Productname,Productunitprice,Productdiscount,Productstock,categoryid,sapplierid) values ('laptop',9,3,10,4,1)
-Insert into @x(Productname,Productunitprice,Productdiscount,Productstock,categoryid,sapplierid) values  ('Bmw',5,2,17,2,1) 
-
-
-Exec dbo.InsertProduct @x
-
-
-
+End

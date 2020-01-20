@@ -16,9 +16,11 @@ namespace Onlineshopping.VeiwModel1.Product
         #endregion
         public Model.DomainModel.POCO.ProductCrud Ref_ProductCrud { get; set; }
 
-       public string SaveProduct(List<Model.Helper.SpHelper.Product1.Insertproduct>InsertProducts)
+        #region [-SaveProduct(List<Model.Helper.SpHelper.Product1.Insertproduct> InsertProducts)-]
+        public string SaveProduct(List<Model.Helper.SpHelper.Product1.Insertproduct> InsertProducts)
         {
-            Ref_ProductCrud.
-        }
+            return Ref_ProductCrud.InsertProduct(InsertProducts);
+        } 
+        #endregion
     }
 }

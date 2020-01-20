@@ -45,7 +45,7 @@ namespace Onlineshopping.Model.DomainModel.POCO
         #endregion
 
         #region [-Insert Product-]
-        public static string InsertProduct(List<Helper.SpHelper.Product1.Insertproduct> insertproducts)
+        public  string InsertProduct(List<Helper.SpHelper.Product1.Insertproduct> insertproducts)
         {
             using (var context = new DomainModel.DTO.EF.onlineshopingEntities())
             {

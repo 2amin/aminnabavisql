@@ -100,6 +100,7 @@
     <Compile Include="Model\Helper\SpHelper\Category\Getcategoryhelper.cs" />
     <Compile Include="Model\Helper\SpHelper\Modeldelper.cs" />
     <Compile Include="Model\Helper\SpHelper\Product1\Getproducthelper.cs" />
+    <Compile Include="Model\Helper\SpHelper\Product1\Insertproduct.cs" />
     <Compile Include="Model\Helper\SpHelper\Product1\Productsphelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

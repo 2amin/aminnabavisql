@@ -8,18 +8,19 @@ namespace Onlineshopping.Model.DomainModel.POCO
 {
    public class CategoryCrud
     {
-      static  public List<Model.Helper.SpHelper.Category.Getcategoryhelper> Select()
+        #region [-Select Category-]
+        static public List<Model.Helper.SpHelper.Category.Getcategoryhelper> Select()
         {
-            using (var Context=new Model.DomainModel.DTO.EF.onlineshopingEntities())
+            using (var Context = new Model.DomainModel.DTO.EF.onlineshopingEntities())
             {
-                List<Helper.SpHelper.Category.Getcategoryhelper> 
+                List<Helper.SpHelper.Category.Getcategoryhelper>
                     list_Category = new List
                     <Helper.SpHelper.Category.Getcategoryhelper>();
                 try
                 {
-                   
-               
-                    list_Category=Context.Database.SqlQuery
+
+
+                    list_Category = Context.Database.SqlQuery
                         <Model.Helper.SpHelper.Category.Getcategoryhelper>
                         (Model.Helper.SpHelper.Category.Categorysphelper.
                         Usp_getcategory).ToList();
@@ -31,8 +32,9 @@ namespace Onlineshopping.Model.DomainModel.POCO
                 }
                 return list_Category;
             }
-            
-        }
-      
+
+        } 
+        #endregion
+
     }
 }

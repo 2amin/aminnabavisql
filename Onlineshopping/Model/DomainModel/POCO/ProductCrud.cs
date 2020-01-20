@@ -9,8 +9,9 @@ namespace Onlineshopping.Model.DomainModel.POCO
 {
     public class ProductCrud
     {
+        #region [-Select Product-]
         public static List<Helper.SpHelper.Product1.Getproducthelper>
-           Select(string name)
+   Select(string name)
 
         {
 
@@ -23,9 +24,9 @@ namespace Onlineshopping.Model.DomainModel.POCO
                 {
 
 
-                   return Context.Database.SqlQuery
-                        <Model.Helper.SpHelper.Product1.Getproducthelper>
-                        (Model.Helper.SpHelper.Product1.Productsphelper.Usp_Getproduct,new SqlParameter("@categoryname",name)).ToList();
+                    return Context.Database.SqlQuery
+                         <Model.Helper.SpHelper.Product1.Getproducthelper>
+                         (Model.Helper.SpHelper.Product1.Productsphelper.Usp_Getproduct, new SqlParameter("@categoryname", name)).ToList();
 
 
 
@@ -38,9 +39,30 @@ namespace Onlineshopping.Model.DomainModel.POCO
 
 
                 }
-               
+
             }
+        } 
+        #endregion
+
+        public static string SaveProduct(List<Helper.SpHelper.Product1.Insertproduct> insertproducts)
+        {
+            using (var context=new DomainModel.DTO.EF.onlineshopingEntities())
+            {
+                try
+                {
+                   return context.Database.ExecuteSqlCommand
+                        (Model.Helper.SpHelper.Product1.Productsphelper.Usp_InsertProduct,
+                          Model.Helper.SpHelper.Product1.Productsphelper.SetInsertParameters(insertproducts)).ToString();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+
         }
-     
+
     }
 }

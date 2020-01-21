@@ -1,5 +1,5 @@
-﻿ALTER   PROCEDURE [dbo].[InsertProduct]
-   @insertProduct dbo.Udt_Producttypeforinsert Readonly
+﻿Create or ALTER   PROCEDURE [dbo].[InsertProduct]
+   @insertProduct dbo.Udt_ProductTypeForInsert Readonly
 AS
 begin  
 declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.productname From @insertProduct ipr
@@ -36,6 +36,7 @@ declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.
 					
 					End
 					print @Eror
+					return @Eror
 					fetch next from Insertproductcursor into @Categoryid,@Supplierid,@Productname
 				
 					
@@ -46,5 +47,5 @@ declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.
 
 close Insertproductcursor
 deallocate Insertproductcursor
-return @Eror
+
 End

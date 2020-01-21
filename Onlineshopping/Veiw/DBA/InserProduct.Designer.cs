@@ -43,6 +43,19 @@
             this.txt_Productsupplierid = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Supplierid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoryid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_edit = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_saveindatabase = new System.Windows.Forms.Button();
+            this.btn_referesh = new System.Windows.Forms.Button();
+            this.Categoryid1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_Productname
@@ -81,11 +94,11 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(313, 13);
+            this.btn_save.Location = new System.Drawing.Point(293, 9);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(246, 61);
             this.btn_save.TabIndex = 5;
-            this.btn_save.Text = "Save Product";
+            this.btn_save.Text = "Add Product";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
@@ -157,11 +170,105 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Categoryid";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameProduct,
+            this.Unitprice,
+            this.Discount,
+            this.Stock,
+            this.Supplierid,
+            this.Categoryid,
+            this.Categoryid1});
+            this.dataGridView1.Location = new System.Drawing.Point(4, 191);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(645, 262);
+            this.dataGridView1.TabIndex = 14;
+            // 
+            // NameProduct
+            // 
+            this.NameProduct.HeaderText = "Product Name";
+            this.NameProduct.Name = "NameProduct";
+            // 
+            // Unitprice
+            // 
+            this.Unitprice.HeaderText = "Product Unitprice";
+            this.Unitprice.Name = "Unitprice";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Product Discount";
+            this.Discount.Name = "Discount";
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Product Stock";
+            this.Stock.Name = "Stock";
+            // 
+            // Supplierid
+            // 
+            this.Supplierid.HeaderText = "Product Supplierid";
+            this.Supplierid.Name = "Supplierid";
+            // 
+            // Categoryid
+            // 
+            this.Categoryid.HeaderText = "Product Categoryid";
+            this.Categoryid.Name = "Categoryid";
+            this.Categoryid.Visible = false;
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.Location = new System.Drawing.Point(663, 325);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(125, 61);
+            this.btn_edit.TabIndex = 15;
+            this.btn_edit.Text = "Edit Product";
+            this.btn_edit.UseVisualStyleBackColor = true;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.Location = new System.Drawing.Point(663, 258);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(125, 61);
+            this.btn_delete.TabIndex = 16;
+            this.btn_delete.Text = "Delete Product";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            // 
+            // btn_saveindatabase
+            // 
+            this.btn_saveindatabase.Location = new System.Drawing.Point(663, 191);
+            this.btn_saveindatabase.Name = "btn_saveindatabase";
+            this.btn_saveindatabase.Size = new System.Drawing.Size(125, 61);
+            this.btn_saveindatabase.TabIndex = 17;
+            this.btn_saveindatabase.Text = "Save Product";
+            this.btn_saveindatabase.UseVisualStyleBackColor = true;
+            this.btn_saveindatabase.Click += new System.EventHandler(this.btn_saveindatabase_Click);
+            // 
+            // btn_referesh
+            // 
+            this.btn_referesh.Location = new System.Drawing.Point(663, 392);
+            this.btn_referesh.Name = "btn_referesh";
+            this.btn_referesh.Size = new System.Drawing.Size(125, 61);
+            this.btn_referesh.TabIndex = 18;
+            this.btn_referesh.Text = "Refersh Table";
+            this.btn_referesh.UseVisualStyleBackColor = true;
+            // 
+            // Categoryid1
+            // 
+            this.Categoryid1.HeaderText = "Product Categoryid1";
+            this.Categoryid1.Name = "Categoryid1";
+            // 
             // InserProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_referesh);
+            this.Controls.Add(this.btn_saveindatabase);
+            this.Controls.Add(this.btn_delete);
+            this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_Productsupplierid);
@@ -175,8 +282,10 @@
             this.Controls.Add(this.txt_Productdiscount);
             this.Controls.Add(this.txt_ProductStock);
             this.Controls.Add(this.txt_Productname);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "InserProduct";
             this.Text = "InserProduct";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +307,17 @@
         private System.Windows.Forms.TextBox txt_Productsupplierid;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unitprice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Supplierid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoryid;
+        private System.Windows.Forms.Button btn_edit;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Button btn_saveindatabase;
+        private System.Windows.Forms.Button btn_referesh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoryid1;
     }
 }

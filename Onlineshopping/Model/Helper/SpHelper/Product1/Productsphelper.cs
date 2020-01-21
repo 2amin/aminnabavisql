@@ -14,23 +14,23 @@ namespace Onlineshopping.Model.Helper.SpHelper.Product1
     {
         public const string Usp_Getproduct = " dbo.Getproduct  @Categoryname ";
 
-        public const string Usp_InsertProduct = "dbo.InsertProduct";
+        public const string Usp_InsertProduct = "dbo.InsertProduct @ProductInfo";
         #region [-SetInsertParameters(List<Insertproduct> listInsertProduct)-]
         public static object[] SetInsertParameters(List<Insertproduct> listInsertProduct)
         {
             #region [- SqlParameter -]
-            SqlParameter categoryListParameter = new SqlParameter()
+            SqlParameter    ProductListParameter = new SqlParameter()
             {
-                ParameterName = "@CategoryInfo",
+                ParameterName = "@ProductInfo",
                 SqlDbType = System.Data.SqlDbType.Structured,
-                TypeName = "dbo.udt_Insert_Category",
+                TypeName = "dbo.Udt_ProductTypeForInsert",
                 Value = listInsertProduct.ToDataTable()
             };
             #endregion
             #region [- parameters  -]
             object[] parameters =
                {
-                categoryListParameter
+                ProductListParameter
             };
             #endregion
             return parameters;

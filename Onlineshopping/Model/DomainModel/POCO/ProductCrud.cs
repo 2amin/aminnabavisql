@@ -51,14 +51,14 @@ namespace Onlineshopping.Model.DomainModel.POCO
             {
                 try
                 {
-                    return context.Database.ExecuteSqlCommand
+                    return (context.Database.ExecuteSqlCommand
                          (Model.Helper.SpHelper.Product1.Productsphelper.Usp_InsertProduct,
-                           Model.Helper.SpHelper.Product1.Productsphelper.SetInsertParameters(insertproducts)).ToString();
+                           Model.Helper.SpHelper.Product1.Productsphelper.SetInsertParameters(insertproducts))).ToString();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
-                    throw;
+                    return ex.ToString();
                 }
                 finally
                 {

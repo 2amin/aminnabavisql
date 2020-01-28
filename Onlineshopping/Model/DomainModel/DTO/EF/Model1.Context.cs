@@ -37,18 +37,32 @@ namespace Onlineshopping.Model.DomainModel.DTO.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getcategory_Result>("getcategory");
         }
     
-        public virtual ObjectResult<getproduct_Result> getproduct(Nullable<int> categoryid)
+        public virtual ObjectResult<getproduct_Result> getproduct(string categoryname)
         {
-            var categoryidParameter = categoryid.HasValue ?
-                new ObjectParameter("Categoryid", categoryid) :
-                new ObjectParameter("Categoryid", typeof(int));
+            var categorynameParameter = categoryname != null ?
+                new ObjectParameter("categoryname", categoryname) :
+                new ObjectParameter("categoryname", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getproduct_Result>("getproduct", categoryidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getproduct_Result>("getproduct", categorynameParameter);
         }
     
         public virtual int InsertProduct()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertProduct");
+        }
+    
+        public virtual ObjectResult<getcategory1_Result> getcategory1(string categoryname)
+        {
+            var categorynameParameter = categoryname != null ?
+                new ObjectParameter("categoryname", categoryname) :
+                new ObjectParameter("categoryname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getcategory1_Result>("getcategory1", categorynameParameter);
+        }
+    
+        public virtual int Insercategory()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insercategory");
         }
     }
 }

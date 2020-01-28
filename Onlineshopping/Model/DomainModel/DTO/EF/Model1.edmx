@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="onlineshopingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="onlineshopingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Categoryid" />
@@ -22,6 +22,7 @@
           <Property Name="Productdiscount" Type="money" />
           <Property Name="Productstock" Type="int" />
           <Property Name="Categoryid" Type="int" />
+          <Property Name="supplierid" Type="int" />
         </EntityType>
         <EntityType Name="ProductSupplier">
           <Key>
@@ -39,18 +40,6 @@
           <Property Name="Supplierid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Suppliername" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Product__Categor__398D8EEE">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="Categoryid" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="Categoryid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ProductSu__Produ__412EB0B6">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductSupplier" Type="Self.ProductSupplier" Multiplicity="*" />
@@ -76,19 +65,19 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="getproduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Categoryid" Type="int" Mode="In" />
+        <Function Name="getcategory1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryname" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="getproduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryname" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insercategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="InsertProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="onlineshopingModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSupplier" EntityType="Self.ProductSupplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Product__Categor__398D8EEE" Association="Self.FK__Product__Categor__398D8EEE">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
           <AssociationSet Name="FK__ProductSu__Produ__412EB0B6" Association="Self.FK__ProductSu__Produ__412EB0B6">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductSupplier" EntitySet="ProductSupplier" />
@@ -98,8 +87,7 @@
             <End Role="ProductSupplier" EntitySet="ProductSupplier" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="onlineshopingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -123,6 +111,7 @@
           <Property Name="Categoryid" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__398D8EEE" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="ProductSupplier" Relationship="Self.FK__ProductSu__Produ__412EB0B6" FromRole="Product" ToRole="ProductSupplier" />
+          <Property Name="supplierid" Type="Int32" />
         </EntityType>
         <EntityType Name="ProductSupplier">
           <Key>
@@ -198,9 +187,13 @@
           </AssociationSet>
           <FunctionImport Name="getcategory" ReturnType="Collection(onlineshopingModel.getcategory_Result)" />
           <FunctionImport Name="getproduct" ReturnType="Collection(onlineshopingModel.getproduct_Result)">
-            <Parameter Name="Categoryid" Mode="In" Type="Int32" />
+          <Parameter Name="categoryname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertProduct" />
+          <FunctionImport Name="getcategory1" ReturnType="Collection(onlineshopingModel.getcategory1_Result)">
+          <Parameter Name="categoryname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insercategory" />
         </EntityContainer>
         <ComplexType Name="getcategory_Result">
           <Property Type="Int32" Name="Categoryid" Nullable="false" />
@@ -215,6 +208,10 @@
           <Property Type="Decimal" Name="Productdiscount" Nullable="true" Precision="19" />
           <Property Type="Int32" Name="Productstock" Nullable="true" />
           <Property Type="String" Name="Suppliername" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getcategory1_Result">
+          <Property Type="Int32" Name="Categoryid" Nullable="false" />
+          <Property Type="String" Name="Categoryname" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -233,6 +230,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="onlineshopingModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="supplierid" ColumnName="supplierid" />
                 <ScalarProperty Name="Productid" ColumnName="Productid" />
                 <ScalarProperty Name="Productname" ColumnName="Productname" />
                 <ScalarProperty Name="Productunitprice" ColumnName="Productunitprice" />
@@ -282,6 +280,15 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertProduct" FunctionName="onlineshopingModel.Store.InsertProduct" />
+          <FunctionImportMapping FunctionImportName="getcategory1" FunctionName="onlineshopingModel.Store.getcategory1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="onlineshopingModel.getcategory1_Result">
+                <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
+                <ScalarProperty Name="Categoryname" ColumnName="Categoryname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Insercategory" FunctionName="onlineshopingModel.Store.Insercategory" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

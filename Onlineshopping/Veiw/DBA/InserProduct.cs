@@ -55,11 +55,12 @@ namespace Onlineshopping.Veiw.DBA
                     InsertProduct.Categoryid = Convert.ToInt32(dataGridView1.Rows[i].Cells[5].Value);
                     
                     list_InsertProduct.Add(InsertProduct);
+                    MessageBox.Show(Ref_ProductVeiwModel.SaveProduct(list_InsertProduct));
 
                 }
 
-                MessageBox.Show(Ref_ProductVeiwModel.Ref_ProductCrud.InsertProduct());
-                Ref_ProductVeiwModel.Ref_ProductCrud.InsertProduct(list_InsertProduct);
+                
+           
             }
         }
     }

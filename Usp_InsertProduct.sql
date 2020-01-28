@@ -22,6 +22,7 @@ declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.
 						BEGIN
 						insert into Product (Productname,Productunitprice,Productdiscount,Productstock,Categoryid,supplierid)
 						Select ipr.Productname,ipr.Productunitprice,ipr.Productdiscount,ipr.Productstock,ipr.categoryid,ipr.sapplierid From @insertProduct ipr
+						Where Ipr.Productname=@Productname
 						set @Eror='Informationes are saved Successfully'
 					
 						END
@@ -36,7 +37,7 @@ declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.
 					
 					End
 					print @Eror
-					return @Eror
+					
 					fetch next from Insertproductcursor into @Categoryid,@Supplierid,@Productname
 				
 					
@@ -49,3 +50,11 @@ close Insertproductcursor
 deallocate Insertproductcursor
 
 End
+
+declare @x dbo.Udt_ProductTypeForInsert
+Insert into @x values('Tv',6,2,30,1,4)
+Insert into @x values('mobile sumsung s7',10,2,850,1,4)
+Insert into @x values('Benz 350',6,2,30,1,4)
+Insert into @x values('samand Lx',1,0,20,1,4)
+Insert into @x values('Spaghetti',.5,0,200,1,2)
+exec [dbo].[InsertProduct] @x

@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "USP", "USP", "{96551D27-A6E
 		Usp_Getcategory.sql = Usp_Getcategory.sql
 		Usp_Getproduct.sql = Usp_Getproduct.sql
 		Usp_InsertProduct.sql = Usp_InsertProduct.sql
+		Usp_UpdateProduct.sql = Usp_UpdateProduct.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDL", "DDL", "{70E9CA2C-731E-4BC3-8E3F-DDCEEF2F7288}"

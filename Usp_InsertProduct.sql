@@ -1,7 +1,8 @@
 ﻿Create or ALTER   PROCEDURE [dbo].[InsertProduct]
    @insertProduct dbo.Udt_ProductTypeForInsert Readonly
 AS
-begin  
+begin  Tran
+begin Try
 declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.productname From @insertProduct ipr
    declare @Categoryid nvarchar(50)
    declare @Supplierid nvarchar(50)
@@ -42,19 +43,16 @@ declare Insertproductcursor Cursor For Select ipr.categoryid,ipr.sapplierid,ipr.
 				
 					
 			End
-
-					
-		
-
+Commit tran			
 close Insertproductcursor
 deallocate Insertproductcursor
+End Try
+begin catch
+Rollback Tran
+End Catch
+				
 
-End
 
-declare @x dbo.Udt_ProductTypeForInsert
-Insert into @x values('Tv',6,2,30,1,4)
-Insert into @x values('mobile sumsung s7',10,2,850,1,4)
-Insert into @x values('Benz 350',6,2,30,1,4)
-Insert into @x values('samand Lx',1,0,20,1,4)
-Insert into @x values('Spaghetti',.5,0,200,1,2)
-exec [dbo].[InsertProduct] @x
+
+go
+exec [dbo].[InsertProduct] 

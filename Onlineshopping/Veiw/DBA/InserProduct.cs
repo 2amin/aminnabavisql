@@ -32,9 +32,10 @@ namespace Onlineshopping.Veiw.DBA
                 InsertProduct.Supplierid,InsertProduct.Categoryid);
         }
         public List<Model.Helper.SpHelper.Product1.Insertproduct> list_InsertProduct{ get; set; }
+      
         private void btn_saveindatabase_Click(object sender, EventArgs e)
         {
-
+            
 
             if (dataGridView1.RowCount == 0)
             {

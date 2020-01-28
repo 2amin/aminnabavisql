@@ -27,28 +27,14 @@ namespace Onlineshopping.Model.DomainModel.DTO.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductSupplier> ProductSupplier { get; set; }
-        public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductSupplier> ProductSuppliers { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
     
         public virtual ObjectResult<getcategory_Result> getcategory()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getcategory_Result>("getcategory");
-        }
-    
-        public virtual ObjectResult<getproduct_Result> getproduct(string categoryname)
-        {
-            var categorynameParameter = categoryname != null ?
-                new ObjectParameter("categoryname", categoryname) :
-                new ObjectParameter("categoryname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getproduct_Result>("getproduct", categorynameParameter);
-        }
-    
-        public virtual int InsertProduct()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertProduct");
         }
     
         public virtual ObjectResult<getcategory1_Result> getcategory1(string categoryname)
@@ -60,9 +46,23 @@ namespace Onlineshopping.Model.DomainModel.DTO.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getcategory1_Result>("getcategory1", categorynameParameter);
         }
     
+        public virtual ObjectResult<getproduct_Result> getproduct(string categoryname)
+        {
+            var categorynameParameter = categoryname != null ?
+                new ObjectParameter("categoryname", categoryname) :
+                new ObjectParameter("categoryname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getproduct_Result>("getproduct", categorynameParameter);
+        }
+    
         public virtual int Insercategory()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insercategory");
+        }
+    
+        public virtual int InsertProduct()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertProduct");
         }
     }
 }

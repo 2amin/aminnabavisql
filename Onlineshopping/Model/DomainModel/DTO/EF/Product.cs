@@ -17,7 +17,7 @@ namespace Onlineshopping.Model.DomainModel.DTO.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ProductSupplier = new HashSet<ProductSupplier>();
+            this.ProductSuppliers = new HashSet<ProductSupplier>();
         }
     
         public int Productid { get; set; }
@@ -28,8 +28,7 @@ namespace Onlineshopping.Model.DomainModel.DTO.EF
         public Nullable<int> Categoryid { get; set; }
         public Nullable<int> supplierid { get; set; }
     
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductSupplier> ProductSupplier { get; set; }
+        public virtual ICollection<ProductSupplier> ProductSuppliers { get; set; }
     }
 }

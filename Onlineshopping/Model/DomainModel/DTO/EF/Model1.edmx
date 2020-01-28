@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="onlineshopingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="onlineshopingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Categoryid" />
@@ -87,7 +87,8 @@
             <End Role="ProductSupplier" EntitySet="ProductSupplier" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="onlineshopingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -97,7 +98,6 @@
           </Key>
           <Property Name="Categoryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Categor__398D8EEE" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -109,9 +109,8 @@
           <Property Name="Productdiscount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Productstock" Type="Int32" />
           <Property Name="Categoryid" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__398D8EEE" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="ProductSupplier" Relationship="Self.FK__ProductSu__Produ__412EB0B6" FromRole="Product" ToRole="ProductSupplier" />
           <Property Name="supplierid" Type="Int32" />
+          <NavigationProperty Name="ProductSuppliers" Relationship="Self.FK__ProductSu__Produ__412EB0B6" FromRole="Product" ToRole="ProductSupplier" />
         </EntityType>
         <EntityType Name="ProductSupplier">
           <Key>
@@ -130,20 +129,8 @@
           </Key>
           <Property Name="Supplierid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Suppliername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ProductSupplier" Relationship="Self.FK__ProductSu__Suppl__4222D4EF" FromRole="Supplier" ToRole="ProductSupplier" />
+          <NavigationProperty Name="ProductSuppliers" Relationship="Self.FK__ProductSu__Suppl__4222D4EF" FromRole="Supplier" ToRole="ProductSupplier" />
         </EntityType>
-        <Association Name="FK__Product__Categor__398D8EEE">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="Categoryid" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="Categoryid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ProductSu__Produ__412EB0B6">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductSupplier" Type="Self.ProductSupplier" Multiplicity="*" />
@@ -169,33 +156,33 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="onlineshopingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductSupplier" EntityType="Self.ProductSupplier" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
-          <AssociationSet Name="FK__Product__Categor__398D8EEE" Association="Self.FK__Product__Categor__398D8EEE">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductSuppliers" EntityType="Self.ProductSupplier" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <AssociationSet Name="FK__ProductSu__Produ__412EB0B6" Association="Self.FK__ProductSu__Produ__412EB0B6">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductSupplier" EntitySet="ProductSupplier" />
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductSupplier" EntitySet="ProductSuppliers" />
           </AssociationSet>
           <AssociationSet Name="FK__ProductSu__Suppl__4222D4EF" Association="Self.FK__ProductSu__Suppl__4222D4EF">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="ProductSupplier" EntitySet="ProductSupplier" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="ProductSupplier" EntitySet="ProductSuppliers" />
           </AssociationSet>
           <FunctionImport Name="getcategory" ReturnType="Collection(onlineshopingModel.getcategory_Result)" />
-          <FunctionImport Name="getproduct" ReturnType="Collection(onlineshopingModel.getproduct_Result)">
-          <Parameter Name="categoryname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="InsertProduct" />
           <FunctionImport Name="getcategory1" ReturnType="Collection(onlineshopingModel.getcategory1_Result)">
-          <Parameter Name="categoryname" Mode="In" Type="String" />
+            <Parameter Name="categoryname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getproduct" ReturnType="Collection(onlineshopingModel.getproduct_Result)">
+            <Parameter Name="categoryname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Insercategory" />
+          <FunctionImport Name="InsertProduct" />
         </EntityContainer>
         <ComplexType Name="getcategory_Result">
+          <Property Type="Int32" Name="Categoryid" Nullable="false" />
+          <Property Type="String" Name="Categoryname" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getcategory1_Result">
           <Property Type="Int32" Name="Categoryid" Nullable="false" />
           <Property Type="String" Name="Categoryname" Nullable="true" MaxLength="50" />
         </ComplexType>
@@ -209,17 +196,13 @@
           <Property Type="Int32" Name="Productstock" Nullable="true" />
           <Property Type="String" Name="Suppliername" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="getcategory1_Result">
-          <Property Type="Int32" Name="Categoryid" Nullable="false" />
-          <Property Type="String" Name="Categoryname" Nullable="true" MaxLength="50" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="onlineshopingModelStoreContainer" CdmEntityContainer="onlineshopingEntities">
-          <EntitySetMapping Name="Category">
+          <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="onlineshopingModel.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
@@ -227,20 +210,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Product">
+          <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="onlineshopingModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="supplierid" ColumnName="supplierid" />
                 <ScalarProperty Name="Productid" ColumnName="Productid" />
                 <ScalarProperty Name="Productname" ColumnName="Productname" />
                 <ScalarProperty Name="Productunitprice" ColumnName="Productunitprice" />
                 <ScalarProperty Name="Productdiscount" ColumnName="Productdiscount" />
                 <ScalarProperty Name="Productstock" ColumnName="Productstock" />
                 <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
+                <ScalarProperty Name="supplierid" ColumnName="supplierid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductSupplier">
+          <EntitySetMapping Name="ProductSuppliers">
             <EntityTypeMapping TypeName="onlineshopingModel.ProductSupplier">
               <MappingFragment StoreEntitySet="ProductSupplier">
                 <ScalarProperty Name="Productid" ColumnName="Productid" />
@@ -249,7 +232,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Supplier">
+          <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="onlineshopingModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
                 <ScalarProperty Name="Supplierid" ColumnName="Supplierid" />
@@ -260,6 +243,14 @@
           <FunctionImportMapping FunctionImportName="getcategory" FunctionName="onlineshopingModel.Store.getcategory">
             <ResultMapping>
               <ComplexTypeMapping TypeName="onlineshopingModel.getcategory_Result">
+                <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
+                <ScalarProperty Name="Categoryname" ColumnName="Categoryname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getcategory1" FunctionName="onlineshopingModel.Store.getcategory1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="onlineshopingModel.getcategory1_Result">
                 <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
                 <ScalarProperty Name="Categoryname" ColumnName="Categoryname" />
               </ComplexTypeMapping>
@@ -279,16 +270,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="InsertProduct" FunctionName="onlineshopingModel.Store.InsertProduct" />
-          <FunctionImportMapping FunctionImportName="getcategory1" FunctionName="onlineshopingModel.Store.getcategory1">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="onlineshopingModel.getcategory1_Result">
-                <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
-                <ScalarProperty Name="Categoryname" ColumnName="Categoryname" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Insercategory" FunctionName="onlineshopingModel.Store.Insercategory" />
+          <FunctionImportMapping FunctionImportName="InsertProduct" FunctionName="onlineshopingModel.Store.InsertProduct" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -303,7 +286,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

@@ -14,7 +14,7 @@ namespace Onlineshopping.Model.Helper.SpHelper.Product1
     {
         public const string Usp_Getproduct = " dbo.Getproduct  @Categoryname ";
 
-        public const string Usp_InsertProduct = "dbo.InsertProduct @ProductInfo";
+        public const string Usp_InsertProduct = "Exec dbo.InsertProduct @Productinfo";
         #region [-SetInsertParameters(List<Insertproduct> listInsertProduct)-]
         public static object[] SetInsertParameters(List<Insertproduct> listInsertProduct)
         {

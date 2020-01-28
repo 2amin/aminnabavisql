@@ -17,13 +17,13 @@ namespace Onlineshopping.Model.DomainModel.DTO.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Supplier()
         {
-            this.ProductSupplier = new HashSet<ProductSupplier>();
+            this.ProductSuppliers = new HashSet<ProductSupplier>();
         }
     
         public int Supplierid { get; set; }
         public string Suppliername { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductSupplier> ProductSupplier { get; set; }
+        public virtual ICollection<ProductSupplier> ProductSuppliers { get; set; }
     }
 }

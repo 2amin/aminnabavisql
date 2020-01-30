@@ -50,11 +50,11 @@
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Supplierid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoryid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoryid1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_saveindatabase = new System.Windows.Forms.Button();
             this.btn_referesh = new System.Windows.Forms.Button();
-            this.Categoryid1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,6 +218,11 @@
             this.Categoryid.Name = "Categoryid";
             this.Categoryid.Visible = false;
             // 
+            // Categoryid1
+            // 
+            this.Categoryid1.HeaderText = "Product Categoryid1";
+            this.Categoryid1.Name = "Categoryid1";
+            // 
             // btn_edit
             // 
             this.btn_edit.Location = new System.Drawing.Point(663, 325);
@@ -226,6 +231,7 @@
             this.btn_edit.TabIndex = 15;
             this.btn_edit.Text = "Edit Product";
             this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // btn_delete
             // 
@@ -254,11 +260,6 @@
             this.btn_referesh.TabIndex = 18;
             this.btn_referesh.Text = "Refersh Table";
             this.btn_referesh.UseVisualStyleBackColor = true;
-            // 
-            // Categoryid1
-            // 
-            this.Categoryid1.HeaderText = "Product Categoryid1";
-            this.Categoryid1.Name = "Categoryid1";
             // 
             // InserProduct
             // 

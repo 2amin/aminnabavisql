@@ -64,5 +64,11 @@ namespace Onlineshopping.Veiw.DBA
            
             }
         }
+        UpdateProduct Ref_Updateproduct;
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            Ref_Updateproduct = new UpdateProduct();
+            Ref_Updateproduct.txtnam
+        }
     }
 }

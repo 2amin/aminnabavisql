@@ -21,6 +21,13 @@ namespace Onlineshopping.VeiwModel1.Product
         {
           
             return Ref_ProductCrud.InsertProduct(InsertProducts);
+        }
+        #endregion
+        #region [-UpdateProduct(List<Model.Helper.SpHelper.Product1.UpdatProduct> listupdeteproduct)-]
+        public void UpdateProduct(List<Model.Helper.SpHelper.Product1.UpdatProduct> listupdeteproduct)
+        {
+            Ref_ProductCrud.UpdateProduct(listupdeteproduct);
+
         } 
         #endregion
     }

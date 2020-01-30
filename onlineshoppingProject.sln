@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UDT", "UDT", "{63F0D748-FBE
 	ProjectSection(SolutionItems) = preProject
 		Udt_Categorytype.sql = Udt_Categorytype.sql
 		Udt_ProductTypeForInsert.sql = Udt_ProductTypeForInsert.sql
+		Udt_ProducttypeForUpdate.sql = Udt_ProducttypeForUpdate.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "USP", "USP", "{96551D27-A6E8-461D-9EFA-D3AB8E8FC889}"

@@ -13,13 +13,13 @@ namespace Onlineshopping.Model.Helper.SpHelper.Product1
    public class Productsphelper
     {
         public const string Usp_Getproduct = " dbo.Getproduct  @Categoryname ";
-
         public const string Usp_InsertProduct = "Exec dbo.InsertProduct @Productinfo";
+        public const string Usp_UpdateProduct = "dbo.UpdateProduct @Productuinfo";
         #region [-SetInsertParameters(List<Insertproduct> listInsertProduct)-]
         public static object[] SetInsertParameters(List<Insertproduct> listInsertProduct)
         {
             #region [- SqlParameter -]
-            SqlParameter    ProductListParameter = new SqlParameter()
+            SqlParameter    InsrtProductListParameter = new SqlParameter()
             {
                 ParameterName = "@ProductInfo",
                 SqlDbType = System.Data.SqlDbType.Structured,
@@ -30,7 +30,28 @@ namespace Onlineshopping.Model.Helper.SpHelper.Product1
             #region [- parameters  -]
             object[] parameters =
                {
-                ProductListParameter
+                InsrtProductListParameter
+            };
+            #endregion
+            return parameters;
+        }
+        #endregion
+        #region [-SetUpdateParameters(List<UpdatProduct> listupdateproduct)-]
+        public static object[] SetUpdateParameters(List<UpdatProduct> listupdateproduct)
+        {
+            #region [-SqlParameter-]
+            SqlParameter UpdateProductListParameter = new SqlParameter()
+            {
+                ParameterName = "@ProductInfo",
+                SqlDbType = System.Data.SqlDbType.Structured,
+                TypeName = "dbo.Udt_ProductTypeForUpdate",
+                Value = listupdateproduct.ToDataTable()
+            };
+            #endregion
+            #region [-parameters-]
+            object[] parameters =
+                {
+                UpdateProductListParameter
             };
             #endregion
             return parameters;

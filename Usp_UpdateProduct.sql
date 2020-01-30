@@ -1,5 +1,5 @@
 ﻿CREATE or alter PROCEDURE dbo.UpdateProdct
-  @UpdateProduct Udt_ProducttypeForInsert Readonly
+  @UpdateProduct Udt_ProducttypeForUpdate Readonly
 AS
    Begin tran
 	begin try
@@ -12,7 +12,7 @@ AS
    declare @Productdiscount money
    declare @Productstock int
    open Cursor_UpdateProduct
-   fetch next from Cursor_UpdateProduct into @Productid, @Productname,@Productunitprice,@Productdiscount,@Productstock,@Categoryid,@Supplierid  
+   fetch next from Cursor_UpdateProduct into @Productid, @Productname,@Productunitprice,@Productdiscount,@Productstock,@Supplierid,@Categoryid  
    While @@FETCH_STATUS=0
    begin
    if(@Productname in(Select P.Productname From Product P))
@@ -30,7 +30,7 @@ AS
 							 Productstock=@Productstock,
 							 Categoryid=@categoryid,
 							 Supplierid=@supplierid
-						   Where Productid=@Productid
+						   Where Productid=(Select Productid From  @UpdateProduct)
 						Print 'Informationes are Updated Successfully'
 						commit tran
 					
@@ -56,3 +56,7 @@ rollback tran
 
 End catch
 RETURN 0 
+
+declare @X Udt_ProducttypeForUpdate
+Insert into @X(Productid,Productname,Productunitprice,Productdiscount,Productstock,categoryid,sapplierid) values(1,'Kebab Kobideh',5,2,80,2,1)
+exec dbo.UpdateProdct @x

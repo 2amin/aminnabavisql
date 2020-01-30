@@ -72,5 +72,23 @@ namespace Onlineshopping.Model.DomainModel.POCO
         } 
         #endregion
 
+        public void UpdateProduct(List<Helper.SpHelper.Product1.UpdatProduct> list_Updateproduct)
+        {
+            using (var context = new DomainModel.DTO.EF.onlineshopingEntities())
+            {
+                try
+                {
+                    context.Database.ExecuteSqlCommand(Model.Helper.SpHelper.Product1.Productsphelper.Usp_UpdateProduct,
+                        Model.Helper.SpHelper.Product1.Productsphelper.SetUpdateParameters(list_Updateproduct));
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+        }
+
     }
 }

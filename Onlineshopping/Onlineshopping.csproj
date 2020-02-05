@@ -135,9 +135,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\DomainModel\DTO\MetaData\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\DomainModel\DTO\EF\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

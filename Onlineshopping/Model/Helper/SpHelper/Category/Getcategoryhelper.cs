@@ -8,7 +8,7 @@ namespace Onlineshopping.Model.Helper.SpHelper.Category
 {
    public class Getcategoryhelper
     {
-        public int Categoryid { get; set; }
+     
         public string Categoryname { get; set; }
     }
 }

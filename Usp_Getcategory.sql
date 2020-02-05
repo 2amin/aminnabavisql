@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE dbo.getcategory
+﻿CREATE or alter PROCEDURE dbo.getcategory
     
 AS
 
@@ -6,7 +6,7 @@ BEGIN tran
 
 BEGIN try
 
- Select * From Category 
+ Select categoryname From Category 
  Commit tran
 
 END try

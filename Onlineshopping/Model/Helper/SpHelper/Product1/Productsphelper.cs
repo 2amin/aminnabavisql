@@ -23,7 +23,7 @@ namespace Onlineshopping.Model.Helper.SpHelper.Product1
             {
                 ParameterName = "@ProductInfo",
                 SqlDbType = System.Data.SqlDbType.Structured,
-                TypeName = "dbo.Udt_ProductTypeForInsert",
+                TypeName = "dbo.Udt_InsertProduct",
                 Value = listInsertProduct.ToDataTable()
             };
             #endregion

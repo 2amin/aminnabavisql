@@ -9,7 +9,7 @@ namespace Onlineshopping.Model.DomainModel.POCO
    public class CategoryCrud
     {
         #region [-Select Category-]
-        static public List<Model.Helper.SpHelper.Category.Getcategoryhelper> Select()
+         public List<Model.Helper.SpHelper.Category.Getcategoryhelper> Select()
         {
             using (var Context = new Model.DomainModel.DTO.EF.onlineshopingEntities())
             {
@@ -20,10 +20,10 @@ namespace Onlineshopping.Model.DomainModel.POCO
                 {
 
 
-                    list_Category = Context.Database.SqlQuery
+                    list_Category =( Context.Database.SqlQuery
                         <Model.Helper.SpHelper.Category.Getcategoryhelper>
-                        (Model.Helper.SpHelper.Category.Categorysphelper.
-                        Usp_getcategory).ToList();
+                        (Model.Helper.SpHelper.Category.Categorysphelper.Usp_getcategory)).ToList();
+
                 }
                 catch (Exception)
                 {

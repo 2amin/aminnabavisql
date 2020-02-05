@@ -28,7 +28,13 @@ namespace Onlineshopping.VeiwModel1.Product
         {
             Ref_ProductCrud.UpdateProduct(listupdeteproduct);
 
-        } 
+        }
         #endregion
-    }
+        #region [-RefereshProduct(string name)-]
+        public List<Model.Helper.SpHelper.Product1.Getproducthelper> RefereshProduct(string name)
+        {
+            return Ref_ProductCrud.Select(name);
+        }
+    } 
+    #endregion
 }

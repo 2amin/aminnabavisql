@@ -10,7 +10,7 @@ namespace Onlineshopping.Model.DomainModel.POCO
     public class ProductCrud
     {
         #region [-Select Product-]
-        public static List<Helper.SpHelper.Product1.Getproducthelper>
+        public  List<Helper.SpHelper.Product1.Getproducthelper>
    Select(string name)
 
         {
@@ -69,9 +69,10 @@ namespace Onlineshopping.Model.DomainModel.POCO
 
             }
 
-        } 
+        }
         #endregion
 
+        #region [-UpdateProduct-]
         public void UpdateProduct(List<Helper.SpHelper.Product1.UpdatProduct> list_Updateproduct)
         {
             using (var context = new DomainModel.DTO.EF.onlineshopingEntities())
@@ -88,7 +89,8 @@ namespace Onlineshopping.Model.DomainModel.POCO
                 }
 
             }
-        }
+        } 
+        #endregion
 
     }
 }
